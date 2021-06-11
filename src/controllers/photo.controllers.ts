@@ -16,7 +16,13 @@ export async function createPhoto(req: Request, res: Response): Promise<Response
     return res.json({msg:'Photo saved', photo})
 }
 
-export async function getPhoto(req: Request, res: Response): Promise<Response> {
+export async function getPhotos(req: Request, res: Response): Promise<Response> {
     const photos = await Photo.find()
     return res.json(photos)
+}
+
+
+export async function getPhoto(req: Request, res: Response): Promise<Response> {
+    const photo = await Photo.findById(req.params.id)
+    return res.json(photo)
 }
